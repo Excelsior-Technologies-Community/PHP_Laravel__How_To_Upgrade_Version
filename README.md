@@ -6,7 +6,9 @@
 composer create-project laravel/laravel PHP_Laravel__How_To_Upgrade_Version "^11.0"
 ```
 # Step 2: Now open the project and select composer.json file and show the all laravel framework:
- <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b5be0813-b0f4-4981-a12d-74e7a993c242" />
+
+ <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9a8829f4-fb30-4f0b-88bb-699027075178" />
+
 
 # Step 3 :Now upgrade version install to laravel 11 to laravel 12:
 # Open the terminal and run this command:
