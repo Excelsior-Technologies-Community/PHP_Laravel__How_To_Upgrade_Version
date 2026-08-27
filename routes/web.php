@@ -7,7 +7,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/laravel-upgrade', [LaravelUpgradeController::class, 'index'])->name('laravel-upgrade.index');
-Route::post('/laravel-upgrade', [LaravelUpgradeController::class, 'upgrade'])->name('laravel-upgrade.upgrade');
-Route::get('/laravel-upgrade/status/{upgrade}', [LaravelUpgradeController::class, 'status'])->name('laravel-upgrade.status');
-Route::get('/laravel-upgrade/stream/{upgrade}', [LaravelUpgradeController::class, 'stream'])->name('laravel-upgrade.stream');
+Route::get(
+    '/laravel-upgrade',
+    [LaravelUpgradeController::class, 'index']
+)->name('laravel-upgrade.index');
+
+Route::post(
+    '/laravel-upgrade/compatibility',
+    [LaravelUpgradeController::class, 'compatibility']
+)->name('laravel-upgrade.compatibility');
+
+Route::post(
+    '/laravel-upgrade/dry-run',
+    [LaravelUpgradeController::class, 'dryRun']
+)->name('laravel-upgrade.dry-run');
+
+Route::post(
+    '/laravel-upgrade',
+    [LaravelUpgradeController::class, 'upgrade']
+)->name('laravel-upgrade.upgrade');
+
+Route::get(
+    '/laravel-upgrade/status/{upgrade}',
+    [LaravelUpgradeController::class, 'status']
+)->name('laravel-upgrade.status');
+
+Route::get(
+    '/laravel-upgrade/stream/{upgrade}',
+    [LaravelUpgradeController::class, 'stream']
+)->name('laravel-upgrade.stream');
