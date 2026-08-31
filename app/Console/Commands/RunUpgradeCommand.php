@@ -11,17 +11,31 @@ class RunUpgradeCommand extends Command
     protected $signature = 'upgrade:run {id}';
 
     protected $description =
-        'Run a Laravel upgrade in the background';
+    'Run a Laravel upgrade in the background';
 
     public function handle(
         LaravelUpgradeService $service
     ): int {
         $upgrade =
-            LaravelUpgrade::find($this->argument('id'));
+            LaravelUpgrade::find(
+                $this->argument('id')
+            );
 
         if (!$upgrade) {
             $this->error(
                 'Upgrade record not found.'
+            );
+
+            return self::FAILURE;
+        }
+
+        /*
+         * Prevent the same upgrade from
+         * accidentally running twice.
+         */
+        if ($upgrade->status !== 'running') {
+            $this->error(
+                'This upgrade is not in running state.'
             );
 
             return self::FAILURE;
